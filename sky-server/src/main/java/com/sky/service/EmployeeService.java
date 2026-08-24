@@ -20,4 +20,10 @@ public interface EmployeeService {
     PageResult pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
 
     void startOrStop(Integer status, Long id);
+
+    Employee getMyId(Long id);
+
+    void update(EmployeeDTO employeeDTO);
+
+
 }
