@@ -23,6 +23,7 @@ import com.sky.result.PageResult;
 import com.sky.service.DishService;
 import com.sky.vo.DishVO;
 
+
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -76,4 +77,30 @@ public class DishServiceImpl implements DishService {
             dishMapper.deleteByIds(ids);
             dishFlavorMapper.deleteByDishIds(ids);
     }
+
+    public DishVO getByIdWithFlavor(Long id){
+        Dish dish=dishMapper.getById(id);
+        List<DishFlavor> dishFlavors=dishFlavorMapper.getByDishId(id);
+        DishVO dishVO=new DishVO();
+        BeanUtils.copyProperties(dish,dishVO);
+        dishVO.setFlavors(dishFlavors);
+        return dishVO;
+    }
+
+    public void updateWithFlavor(DishDTO dishDTO){
+        Dish dish=new Dish();
+        BeanUtils.copyProperties(dishDTO, dish);
+        dishMapper.update(dish);
+        dishFlavorMapper.deleteByDishId(dishDTO.getId());
+        List<DishFlavor> flavors=dishDTO.getFlavors();
+                if(flavors!=null&&flavors.size()>0){
+            flavors.forEach(dishFlavor->{
+                dishFlavor.setDishId(dishDTO.getId());
+            });
+            dishFlavorMapper.insertBatch(flavors);
+        }
+
+        }
+
+        
 }
