@@ -1,5 +1,6 @@
 package com.sky.mapper;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -25,5 +26,13 @@ public interface SetmealMapper {
     void insert(Setmeal setmeal);
 
     Page<SetmealVO> pageQuery(SetmealPageQueryDTO setmealPageQueryDTO);
+
+    @Select ("select * from setmeal where id=#{id}")
+    Setmeal getById(Long id);
+
+    @Delete ("delete from setmeal where id=#{id}")
+    void deleteById(Long setmealId);
+
+    void update(Setmeal setmeal);
 
 }

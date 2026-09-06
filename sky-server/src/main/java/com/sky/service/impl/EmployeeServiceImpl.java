@@ -31,14 +31,14 @@ import java.util.List;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private final Docket docket;
+    //private final Docket docket;
     @Autowired
     private EmployeeMapper employeeMapper;
 
-    EmployeeServiceImpl(Docket docket) {
+    /*EmployeeServiceImpl(Docket docket) {
         this.docket = docket;
     }
-
+*/
     /**
      * 员工登录
      *

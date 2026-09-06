@@ -21,4 +21,6 @@ public interface DishService {
 	public void updateWithFlavor(DishDTO dishDTO);
 
     public List<Dish> list(Long categoryId);
+
+    public void startOrStop(Integer status, Long id);
 }
