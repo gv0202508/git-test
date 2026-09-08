@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -21,5 +23,6 @@ public class OrderSubmitVO implements Serializable {
     //订单金额
     private BigDecimal orderAmount;
     //下单时间
+    @JsonFormat (pattern = "yyyy-MM-dd HH:mm:ss ")
     private LocalDateTime orderTime;
 }
