@@ -1,5 +1,7 @@
 package com.sky.mapper;
 
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -12,4 +14,6 @@ public interface UserMapper {
     public User getByOpenid(String openid);
 
     public void insert(User user);
+
+    Integer countByMap(Map map);
 }
